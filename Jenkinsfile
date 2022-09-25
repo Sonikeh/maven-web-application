@@ -31,7 +31,7 @@ node
  
  stage("UploadArtifactsintoNexus")
  {
- sh "${mavenHome}/bin/mvn deploy"
+ nexusArtifactUploader artifacts: [[artifactId: 'maven-web-application', classifier: '', file: 'target/maven-web-app.war', type: 'war']], credentialsId: 'nexus_credentials', groupId: 'com.mt', nexusUrl: '3.144.75.107:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'paypal-pipeline-releases', version: '0.0.1'
  }
  
   stage("DeployAppTomcat")
